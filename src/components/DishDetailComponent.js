@@ -1,36 +1,32 @@
-
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, CardImg,  CardText, CardBody, CardTitle } from 'reactstrap';
 
-class DishdetailComponent extends Component 
-{
-    renderDish(dish) 
+const RenderDish = ({dish}) =>{
+    
+    if (dish != null)
     {
-        if (dish != null)
-        {
-            return(
-                <div className="col-12 col-md-5 m-1">
-                    <Card>
-                        <CardImg src={dish.image} alt={dish.name} />
-                        <CardBody>
-                            <CardTitle><b>{dish.name}</b></CardTitle>
-                            <CardText>{dish.description}</CardText>
-                        </CardBody>
-                    </Card>
-                </div>
-            );
-        }
-        else
-        {
-            return(
-            <div></div>
-            );
-        }
+        return(
+            <div className="col-12 col-md-5 m-1">
+                <Card>
+                    <CardImg src={dish.image} alt={dish.name} />
+                    <CardBody>
+                        <CardTitle><b>{dish.name}</b></CardTitle>
+                        <CardText>{dish.description}</CardText>
+                    </CardBody>
+                </Card>
+            </div>
+        );
     }
-
-    renderComments(comments)
+    else
     {
-        if(comments == null)
+        return(
+        <div></div>
+        );
+    }
+}
+
+const RenderComment = ({comments}) =>{
+    if(comments == null)
         {
             return(
             <div></div>
@@ -61,24 +57,21 @@ class DishdetailComponent extends Component
         )
     }
 
-    render() 
-    {
-        const dish=this.props.dish;
+const DishdetailComponent = (props) =>{
+    const dish= props.dish;
         if(dish == null)
         {
             return(
                 <div></div>
             )
-        }
-        const Item = this.renderDish(dish);
-        const ItemComment = this.renderComments(dish.comments);
-        return (
+        }else{
+         return (
           <div className="row">
-              {Item}
-              {ItemComment}
+              <RenderDish dish={dish}/>
+              <RenderComment comments = {props.dish.comments}/>
           </div>  
-        );
+         )
+        }
     }
-}
 
 export default DishdetailComponent;
