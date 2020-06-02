@@ -11,7 +11,7 @@ function Footer(props) {
                     <ul className="list-unstyled">
                         <li><Link to='/home'>Home</Link></li>
                         <li><Link to='/menu'>Menu</Link></li>
-                        <li><Link to='/contact'>Contact us</Link></li>
+                        <li><Link to='/contactus'>Contact us</Link></li>
                         <li><Link to='/about'>About us</Link></li>
                     </ul>
                 </div>
