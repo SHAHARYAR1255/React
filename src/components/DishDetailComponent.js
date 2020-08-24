@@ -1,5 +1,7 @@
-import React from 'react';
-import { Card, CardImg,  CardText, CardBody, CardTitle, Breadcrumb , BreadcrumbItem } from 'reactstrap';
+import React  from 'react';
+import { Button, Modal, ModalHeader, ModalBody, Row,Col, Input} from 'reactstrap';
+import {LocalForm, Errors , Control} from 'react-redux-form';
+import { Card, CardImg,  CardText, CardBody, CardTitle, Breadcrumb , BreadcrumbItem, Label } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 const RenderDish = ({dish}) =>{
@@ -54,12 +56,15 @@ const RenderComment = ({comments}) =>{
                 <ul className="list-unstyled">
                     {comment}
                 </ul>
+               <CommentForm />
             </div>
         )
     }
 
 const DishdetailComponent = (props) =>{
+   
     const dish= props.dish;
+
         if(dish == null)
         {
             return(
@@ -90,6 +95,84 @@ const DishdetailComponent = (props) =>{
              </div>
          
          )
+        }
+    }
+
+    class CommentForm extends React.Component{
+        constructor(props){
+            super(props);
+            this.state= {
+                open : false
+            }
+            this.toggleModal = this.toggleModal.bind(this);
+            this.handleSubmit = this.handleSubmit.bind(this);
+    
+        }
+        
+        handleSubmit(values){
+            console.log('here is maal : ' + JSON.stringify(values));
+            alert('here is maal : ' + JSON.stringify(values));
+
+        }
+    
+        toggleModal(){
+            this.setState({
+                open : !this.state.open
+            })
+        }
+    
+        render(){
+            const required = (val) => val && val.length;
+            const maxLength = (len) => (val) => !(val) || (val.length <= len);
+            const minLength = (len) => (val) => val && (val.length >= len);
+           
+            return(
+                <>
+                <Button outline onClick={this.toggleModal} className="btn btn-secondary"><span className="fa fa-pencil fa-lg"></span>Submitfeedback</Button>
+                <Modal toggel={this.toggleModal} isOpen={this.state.open}>
+                    <ModalHeader toggle={this.toggleModal}><b>Submit feedback</b></ModalHeader>
+                        <ModalBody>
+                            <LocalForm onSubmit={values => this.handleSubmit(values)}>
+                                
+                                <Label htmlFor="rating">Rating</Label>
+                                <Input type="select" name="rating" id="rating">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                </Input>
+                               <Label htmlFor="name">Your Name</Label>
+                               <Control.text model=".name" id="name" name="name"
+                                            placeholder="Name"
+                                            className="form-control"
+                                            validators={{
+                                                required, minLength: minLength(3), maxLength: maxLength(15)
+                                            }}
+                                             />
+                                        <Errors
+                                            className="text-danger"
+                                            model=".name"
+                                            show="touched"
+                                            messages={{
+                                                required: 'Required',
+                                                minLength: 'Must be greater than 2 characters',
+                                                maxLength: 'Must be 15 characters or less'
+                                            }}
+                                         />
+                                       
+                                         <Label htmlFor="feedback">Comment</Label>
+                                       
+                                          <Row>
+                                          <textarea className="ml-3" name="feedback" rows="6" cols='70'></textarea>
+                                          </Row>
+                                             <Button className='mt-3' type="submit" color="primary">submit</Button>
+                            </LocalForm>
+                        </ModalBody>
+                </Modal>
+                </>
+            );
         }
     }
 
