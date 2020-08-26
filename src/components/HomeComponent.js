@@ -30,7 +30,7 @@ const Home = (props) => {
       <div className="container">
         <div className="row align-items-start" >
           <div className="col-12 col-md m-1">
-            <RenderCard  errmess={props.errMess} isLoading={props.isLoading} item={props.dish}/>
+            <RenderCard  errMess={props.errMess} isLoading={props.isLoading} item={props.dish}/>
           </div>
           <div className="col-12 col-md m-1">
             <RenderCard item={props.promotion}/>
