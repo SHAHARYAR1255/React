@@ -70,7 +70,7 @@ class Main extends Component {
             <Header />
             <Switch>
                 <Route path='/home' component={HomePage} />
-                <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes.dishes}/*this is second way */ />} /> 
+                <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes}/*this is second way */ />} /> 
                 <Route path ='/menu/:dishId' component={DishWithId} />
                 <Route exact path='/contactus' component={Contact} />
                 <Route exact path='/aboutus' component={AboutPage} />
