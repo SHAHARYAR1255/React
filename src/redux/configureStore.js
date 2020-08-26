@@ -1,8 +1,9 @@
-import {createStore, combineReducers} from 'redux';
+import {createStore, combineReducers , applyMiddleware} from 'redux';
 import { Dishes } from './dishReducer';
 import { Comments } from './commentReducer';
 import { Promotions } from './promotionReducer';
 import { Leaders } from './leaderReducer';
+import thunk from 'redux-thunk';
 
 export const configureStore = () => {
     const store = createStore(
@@ -11,8 +12,9 @@ export const configureStore = () => {
             comments: Comments,
             promotions: Promotions,
             leaders: Leaders
-        })
-    );
+        }) ,
+        applyMiddleware(thunk)
+   );
 
     return store;
 }
