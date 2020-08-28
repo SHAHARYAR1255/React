@@ -4,6 +4,7 @@ import {LocalForm, Errors , Control} from 'react-redux-form';
 import { Card, CardImg,  CardText, CardBody, CardTitle, Breadcrumb , BreadcrumbItem, Label } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
+import { baseurl} from '../shared/baseurl';
 
 const RenderDish = ({dish}) =>{
     
@@ -12,7 +13,7 @@ const RenderDish = ({dish}) =>{
         return(
             <div>
                 <Card>
-                    <CardImg src={dish.image} alt={dish.name} />
+                    <CardImg src={baseurl + dish.image} alt={dish.name} />
                     <CardBody>
                         <CardTitle><b>{dish.name}</b></CardTitle>
                         <CardText>{dish.description}</CardText>

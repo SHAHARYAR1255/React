@@ -4,7 +4,7 @@ import { Comments } from './commentReducer';
 import { Promotions } from './promotionReducer';
 import { Leaders } from './leaderReducer';
 import thunk from 'redux-thunk';
-import logger from 'redux-logger';
+//import logger from 'redux-logger';
 import { createForms } from 'react-redux-form';
 import { InitialFeedback } from './Form';
 
@@ -18,7 +18,7 @@ export const configureStore = () => {
             ...createForms({
                 feedback : InitialFeedback
             })
-        }) ,applyMiddleware(thunk, logger)
+        }) ,applyMiddleware(thunk)
    );
 
     return store;
