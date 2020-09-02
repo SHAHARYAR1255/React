@@ -33,7 +33,7 @@ const mapStateToProps = state =>{
 }
 
 class Main extends Component {
-    
+     
  componentDidMount() {
         this.props.fetchDishes();
         this.props.fetchComments();
