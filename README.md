@@ -1,5 +1,6 @@
-Live at https://restaurant-4e27e.web.app/contactus
+Live at https://restaurant-4e27e.web.app
 (using fetch to call data)
+(web server deployed on heroku serving rest api)
 _____________________________________________________________________________________________________________
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
