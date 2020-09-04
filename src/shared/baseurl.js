@@ -1,1 +1,1 @@
-export const baseurl = 'http://localhost:3002/' ;
+export const baseurl = 'https://thehotedipa.herokuapp.com/' ;

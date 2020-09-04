@@ -19,7 +19,7 @@ export const postFeedback = (values) => (dispatch) => {
     message : values.message
 }
 newFeedback.date = new Date().toISOString();
-  return fetch(baseurl + 'feedback', {
+  return fetch(baseurl + 'feedbacks', {
   method: "POST",
   body: JSON.stringify(newFeedback),
   headers: {
